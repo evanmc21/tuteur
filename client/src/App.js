@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery'
 import './App.css';
 
 class App extends Component {
@@ -8,7 +9,14 @@ class App extends Component {
     this.getClients = this.getClients.bind(this)
   }
   getClients(){
-    this.setState({clientsReceived: "Help the kids learn!"})
+    $.ajax({
+      url: "http://localhost:3000/api/clients",
+      type: "GET",
+      context: this,
+      success: function (result){
+        this.setState({clientsReceived: JSON.stringify(result)})
+      }
+    });
   }
   render() {
     return (
