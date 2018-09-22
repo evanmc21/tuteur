@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {clientsReceived: ""}
+    this.getClients = this.getClients.bind(this)
+  }
+  getClients(){
+    this.setState({clientsReceived: "Help the kids learn!"})
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <button
+        onClick={this.getClients}
+        style={{marginTop: '25vh'}}
+        >
+        Show Clients
+        </button>
+        <p>
+          {this.state.clientsReceived}
         </p>
       </div>
     );
