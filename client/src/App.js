@@ -10,12 +10,12 @@ class App extends Component {
   }
 
   login() {
-    const email = $("#email").value()
-    const password = $("#password").value()
+    const email = $("#email").val()
+    const password = $("#password").val()
     const request = {"auth": {"email": email, "password": password}}
     console.log(request)
     $.ajax({
-      url: "http://localhost:3000/api/user_token",
+      url: "http://localhost:3001/api/user_token",
       type: "POST",
       data: request,
       dataType: "json",
@@ -26,9 +26,11 @@ class App extends Component {
     })
   }
   getClients(){
+    let token = "Bearer " + localStorage.getItem("jwt")
     $.ajax({
       url: "http://localhost:3000/api/clients",
       type: "GET",
+      beforeSend: function(xhr){xhr.setRequestHeader('Authorization', token)},
       context: this,
       success: function (result){
         this.setState({clientsReceived: JSON.stringify(result)})
