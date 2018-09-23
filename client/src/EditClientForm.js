@@ -16,7 +16,7 @@ class EditClientForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
+    }
   handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
@@ -32,45 +32,54 @@ class EditClientForm extends Component {
           name="name"
           type="text"
           placeholder="Name" required
-          value={this.state.name}/>
+          value={this.state.name}
+          onChange={this.handleChange} />
       <input
           name="age"
           type="number"
           placeholder="Age" required
-          value={this.state.age}/>
+          value={this.state.age}
+          onChange={this.handleChange} />
       <input
           name="location"
           type="text"
           placeholder="Location" required
-          value={this.state.location}/>
+          value={this.state.location}
+          onChange={this.handleChange} />
       <input
           name="school"
           type="text"
           placeholder="School" required
-          value={this.state.school}/>
+          value={this.state.school}
+          onChange={this.handleChange} />
       <input
           name="goals"
           type="text"
           placeholder="Goals"
-          value={this.state.goals}/>
+          value={this.state.goals}
+          onChange={this.handleChange} />
       <input
           name="notes"
           type="text"
           placeholder="Notes"
-          value={this.state.notes}/>
+          value={this.state.notes}
+          onChange={this.handleChange} />
       <input
           name="rate"
           type="number"
           placeholder="Rate per hour"
-          value={this.state.rate}/>
-      <input ref={input => userId = input}
+          value={this.state.rate}
+          onChange={this.handleChange} />
+      <input
+          name="user_id"
           type="hidden"
           id="user_id"
-          name="user_id"
-          value={this.state.userId}/>
+          value={this.state.userId}
+          onChange={this.handleChange} />
+
+      </form>
     )
   }
+};
 
-}
-
-export default EditClientForm
+export default EditClientForm;
