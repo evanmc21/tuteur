@@ -28,35 +28,42 @@ class EditClientForm extends Component {
   render(){
     return(
       <form onSubmit={this.handleSubmit}>
-      <input ref={input => name = input}
+      <input
+          name="name"
           type="text"
           placeholder="Name" required
           value={this.state.name}/>
-      <input ref={input => age = input}
+      <input
+          name="age"
           type="number"
           placeholder="Age" required
           value={this.state.age}/>
-      <input ref={input => location = input}
+      <input
+          name="location"
           type="text"
           placeholder="Location" required
           value={this.state.location}/>
-      <input ref={input => school = input}
+      <input
+          name="school"
           type="text"
           placeholder="School" required
           value={this.state.school}/>
-      <input ref={input => goals = input}
+      <input
+          name="goals"
           type="text"
           placeholder="Goals"
           value={this.state.goals}/>
-      <input ref={input => notes = input}
+      <input
+          name="notes"
           type="text"
           placeholder="Notes"
           value={this.state.notes}/>
-      <input ref={input => rate = input}
+      <input
+          name="rate"
           type="number"
           placeholder="Rate per hour"
           value={this.state.rate}/>
-      <input ref={input => rate = input}
+      <input ref={input => userId = input}
           type="hidden"
           id="user_id"
           name="user_id"
@@ -65,3 +72,5 @@ class EditClientForm extends Component {
   }
 
 }
+
+export default EditClientForm
