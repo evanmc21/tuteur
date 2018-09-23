@@ -39,6 +39,11 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   def destroy
     @client.destroy
+    if @client.destroy
+      head :no_content, status: :ok
+    else
+      render json: @client.errors, status: :unprocessable_entity
+    end
   end
 
   private

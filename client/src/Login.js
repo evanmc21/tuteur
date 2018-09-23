@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 class Login extends Component {
+
+
   login() {
+
     const email = $("#email").val()
     const password = $("#password").val()
     const request = {"auth": {"email": email, "password": password}}
@@ -15,6 +18,8 @@ class Login extends Component {
         localStorage.setItem("jwt", result.jwt)
       }
     })
+
+
   }
   render(){
     return(
