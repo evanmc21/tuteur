@@ -33,7 +33,10 @@ class Clients extends Component {
             {this.state.clients.map(client => {
               return (<Client client={client} key={client.id} />)
             })}
+            <NewClientForm onNewClient={this.addNewClient} />
         </div>
+
+
       )
 }
 }
