@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+
   def require_login
     authenticate_token || render_unauthorized("Access Denied")
   end
@@ -11,13 +13,13 @@ class ApplicationController < ActionController::API
 
   def render_unauthorized(message)
     errors = { errors: [detail: message] }
-    render json: errors, staus, :unauthorized
+    render json: errors, status: :unauthorized
   end
 
   private
 
   def authenticate_token
-    authenticare_with_http_token do | token, options |
+    authenticate_with_http_token do | token, options |
       User.find_by(auth_token: token)
     end
   end
