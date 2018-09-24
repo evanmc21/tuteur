@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Login from './Login';
 import Clients from './Clients';
 import Signup from './Signup';
+import Dashboard from './Dashboard';
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
 import Auth from './modules/Auth';
 import './App.css';
@@ -12,7 +13,7 @@ class App extends Component {
     super();
     this.state = {
       auth: Auth.isUserAuthenticated(),
-      shouldGoToDashboard: false
+      // shouldGoToDashboard: false
     }
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this)
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
@@ -32,7 +33,7 @@ class App extends Component {
         Auth.authenticateToken(res.token);
         this.setState({
           auth: Auth.isUserAuthenticated(),
-          shouldGoToDashboard: true
+          // shouldGoToDashboard: true
         })
       }).catch(err => {
         console.log(err);
@@ -52,7 +53,7 @@ class App extends Component {
       Auth.authenticate(res.token);
       this.setState({
         auth: Auth.isUserAuthenticated(),
-        shouldGoToDashboard: true
+        // shouldGoToDashboard: true
       })
     }).catch(err => console.log(err));
   }
@@ -61,20 +62,25 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
+      <div className="nav">
+      <Link to="/login">login</Link>
+      <Link to="/signup">signup</Link>
+      <Link to="/dashboard">dashboard</Link>
+      <Link to="/clients">clients</Link>
+      </div>
       <h1 style={{marginTop: "20vh", marginBottom: "5vh"}}>
           Tuteur
         </h1>
       <Route exact path="/clients" render={() =>
       <Clients />} />
-      <Route exact path="/signup" render={() => <Signup
-      handleSignupSubmit={this.handleSignupSubmit} />}
-        />
-      <Route exact path="/login" render={() => <Login
-        handleLoginSubmit={this.handleLoginSubmit} />}
-        />
+      <Route exact path="/signup" render={() => (this.state.auth) ?
+      <Redirect to ="/dashboard" /> : <Signup handleSignupSubmit={this.handleSignupSubmit} />} />
+      <Route exact path="/login" render={() => (this.state.auth) ?
+      <Redirect to ="/dashboard" /> : <Login handleLoginSubmit={this.handleLoginSubmit} />} />
+      <Route exact path="/dashboard" render={() =>
+      <Dashboard />} />
       </div>
-      {(this.state.shouldGoToDashboard)} ? <Redirect to="/dashboard" />
-      </Router>
+    </Router>
     );
   }
 }
