@@ -1,52 +1,46 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 
 class Login extends Component {
-
-
-  login() {
-
-    const email = $("#email").val()
-    const password = $("#password").val()
-    const request = {"auth": {"email": email, "password": password}}
-    $.ajax({
-      url: "http://localhost:3000/api/user_token",
-      type: "POST",
-      data: request,
-      dataType: "json",
-      success: function (result) {
-        localStorage.setItem("jwt", result.jwt)
-      }
-    })
-
-
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: ''
+    }
+    this.handleChange = this.handleChange.bind(this)
   }
+
+  handleChange(e) {
+    const name = e.target.name;
+    const val = e.target.value;
+    this.setState({
+      [name]: val,
+    });
+  }
+
   render(){
     return(
-      <div>
-      <form>
-        <label htmlFor="email">Email: </label>
-        <br />
-        <input
+      <div className="login-form">
+        <form onSubmit={(e) => this.props.handleLoginSubmit(e, this.state)}>
+          <input
+          type="text"
           name="email"
-          id="email"
-          type="email"
-        />
-        <br /><br />
-        <label htmlFor="password">Password:</label>
-        <br />
-        <input
-          name="password"
-          id="password"
+          placeholder="email"
+          value={this.state.email}
+          onChange={this.handleChange}
+          />
+          <input
           type="password"
-        />
+          name="password"
+          placeholder="password"
+          value={this.state.password}
+          onChange={this.handleChange}
+          />
+          <input
+          type="submit"
+          value="Login!"
+          />
         </form>
-        <br />
-        <button
-          onClick={this.login}
-        >
-            Login
-        </button>
       </div>
     )
   }

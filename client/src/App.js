@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Login from './Login';
+import Login from './Login';
 import Clients from './Clients';
 import Signup from './Signup';
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
@@ -12,8 +12,10 @@ class App extends Component {
     super();
     this.state = {
       auth: Auth.isUserAuthenticated(),
+      shouldGoToDashboard: false
     }
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this)
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
   }
   handleSignupSubmit(e, data){
     e.preventDefault();
@@ -29,11 +31,30 @@ class App extends Component {
       .then(res => {
         Auth.authenticateToken(res.token);
         this.setState({
-          auth: Auth.isUserAuthenticated()
+          auth: Auth.isUserAuthenticated(),
+          shouldGoToDashboard: true
         })
       }).catch(err => {
         console.log(err);
       })
+  }
+
+  handleLoginSubmit(e, data){
+    e.preventDefault();
+    fetch('/login', {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+      'Content-Type': 'application/json',
+      }
+    }).then(res => res.json())
+    .then(res => {
+      Auth.authenticate(res.token);
+      this.setState({
+        auth: Auth.isUserAuthenticated(),
+        shouldGoToDashboard: true
+      })
+    }).catch(err => console.log(err));
   }
 
   render() {
@@ -48,7 +69,11 @@ class App extends Component {
       <Route exact path="/signup" render={() => <Signup
       handleSignupSubmit={this.handleSignupSubmit} />}
         />
+      <Route exact path="/login" render={() => <Login
+        handleLoginSubmit={this.handleLoginSubmit} />}
+        />
       </div>
+      {(this.state.shouldGoToDashboard)} ? <Redirect to="/dashboard" />
       </Router>
     );
   }
