@@ -1,52 +1,75 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const NewClientForm = ({onNewClient = f => f}) => {
-  let name, age, location, school, goals, notes, rate, userId
-  const submit = e => {
-    e.preventDefaut()
-    onNewClient(name.value, age.value, location.value, school.value, goals.value, notes.value, rate.value, userId.value)
-    name.value = ''
-    age.value = ''
-    location.value = ''
-    school.value = ''
-    goals.value = ''
-    notes.value = ''
-    rate.value = ''
-    userId.value = ''
-    name.focus()
-  }
+class NewClientForm extends Component {
+    constructor() {
+      super();
+      this.state = {
+        name: '',
+        age: '',
+        location: '',
+        school: '',
+        goals: '',
+        notes: '',
+        rate: ''
+      }
+      this.handleChange = this.handleChange.bind(this)
+    }
 
-  return(
-    <form onSubmit={submit}>
-        <input ref={input => name = input}
-            type="text"
-            placeholder="Name" required />
-        <input ref={input => age = input}
-            type="number"
-            placeholder="Age" required />
-        <input ref={input => location = input}
-            type="text"
-            placeholder="Location" required />
-        <input ref={input => school = input}
-            type="text"
-            placeholder="School" required />
-        <input ref={input => goals = input}
-            type="text"
-            placeholder="Goals"  />
-        <input ref={input => notes = input}
-            type="text"
-            placeholder="Notes"  />
-        <input ref={input => rate = input}
-            type="number"
-            placeholder="Rate per hour" required />
-        <input ref={input => rate = input}
-            type="hidden"
-            id="user_id"
-            name="user_id"
-            value={this.userId}/>
-            <button>Add Client</button>
-  </form>
-  )
+    handleChange(e) {
+      const name = e.target.name;
+      const val = e.target.value;
+      this.setState({
+        [name]: val,
+      });
+    }
+
+    render() {
+      return(
+        <form onSubmit={(e) => this.props.addClient(e, this.state)}>
+            <input
+                type="text"
+                name="name"
+                placeholder="Name" required
+                value={this.state.name}
+                onChange={this.handleChange} />
+            <input
+                type="number"
+                name="age"
+                placeholder="Age" required
+                value={this.state.age}
+                onChange={this.handleChange} />
+            <input
+                type="text"
+                name="location"
+                placeholder="Location" required
+                value={this.state.location}
+                onChange={this.handleChange}/>
+            <input
+                type="text"
+                name="school"
+                placeholder="School" required
+                value={this.state.school}
+                onChange={this.handleChange}/>
+            <input
+                type="text"
+                name="goals"
+                placeholder="Goals"
+                value={this.state.goals}
+                onChange={this.handleChange}  />
+            <input
+                type="text"
+                name="notes"
+                placeholder="Notes"
+                value={this.state.notes}
+                onChange={this.handleChange}  />
+            <input
+                type="number"
+                name="rate"
+                placeholder="Rate per hour" required
+                value={this.state.rate} />
+                <input type="submit" value="add client" />
+            </form>
+  )}
 }
 
 export default NewClientForm;
