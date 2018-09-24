@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import Login from './Login';
 import Clients from './Clients';
+import Signup from './Signup';
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
 import Auth from './modules/Auth';
 import './App.css';
@@ -12,8 +13,25 @@ class App extends Component {
     this.state = {
       auth: Auth.isUserAuthenticated(),
     }
+    this.handleSignupSubmit = this.handleSignupSubmit.bind(this)
   }
-
+  handleSignupSubmit(e, data){
+    e.preventDefault();
+    fetch('/users', {
+      method: "POST",
+      body: JSON.stringify({
+        user: data,
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+      .then(res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
+  }
 
   render() {
     return (
@@ -24,8 +42,9 @@ class App extends Component {
         </h1>
       <Route exact path="/clients" render={() =>
       <Clients />} />
-
-
+      <Route exact path="/signup" render={() => <Signup
+      handleSignupSubmit={this.handleSignupSubmit} />}
+        />
       </div>
       </Router>
     );

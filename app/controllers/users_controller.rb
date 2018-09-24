@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   def profile
     user = User.find_by_auth_token!(request.headers[:token])
-    render json: { user: { email: user.email } }
+    user_clients = user.clients
+    render json: { user: { email: user.email }, clients: user_clients }
   end
 
   private

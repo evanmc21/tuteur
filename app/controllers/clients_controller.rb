@@ -1,16 +1,18 @@
 class ClientsController < ApplicationController
-  before_action :require_login
+  before_action :require_login, except: [:index, :show]
 
   def index
-      @user = current_user
-      @clients = @user.clients
-      render json: @clients
+      # @user = current_user
+      # @clients = @user.clients
+      clients = Client.all
+      render json: { clients: clients }
   end
 
   def show
-    @user = current_user
-    @client = @user.clients.find(params[:id])
-    render json: @client
+    # @user = current_user
+    # @client = @user.clients.find(params[:id])
+      client = Client.find(params[:id])
+      render json: { client: client }
   end
 
   def create
