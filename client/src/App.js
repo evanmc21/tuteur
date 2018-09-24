@@ -3,6 +3,7 @@ import Login from './Login';
 import Clients from './Clients';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
+import Logout from './Logout';
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
 import Auth from './modules/Auth';
 import './App.css';
@@ -13,10 +14,10 @@ class App extends Component {
     super();
     this.state = {
       auth: Auth.isUserAuthenticated(),
-      // shouldGoToDashboard: false
     }
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this)
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
   handleSignupSubmit(e, data){
     e.preventDefault();
@@ -33,7 +34,6 @@ class App extends Component {
         Auth.authenticateToken(res.token);
         this.setState({
           auth: Auth.isUserAuthenticated(),
-          // shouldGoToDashboard: true
         })
       }).catch(err => {
         console.log(err);
@@ -58,6 +58,21 @@ class App extends Component {
     }).catch(err => console.log(err));
   }
 
+  handleLogout() {
+    fetch('/logout', {
+      method: "DELETE",
+      headers: {
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`
+      }
+    }).then(res => {
+      Auth.deauthenticateToken();
+      this.setState({
+        auth: Auth.isUserAuthenticated(),
+      })
+    }).catch(err => console.log(err));
+  }
+
   render() {
     return (
       <Router>
@@ -67,6 +82,7 @@ class App extends Component {
       <Link to="/signup">signup</Link>
       <Link to="/dashboard">dashboard</Link>
       <Link to="/clients">clients</Link>
+      <span onClick={this.handleLogout}>Logout</span>
       </div>
       <h1 style={{marginTop: "20vh", marginBottom: "5vh"}}>
           Tuteur
