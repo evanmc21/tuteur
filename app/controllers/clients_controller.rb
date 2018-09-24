@@ -16,12 +16,13 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new(client_params)
-    @client.user = current_user
-    if @client.save
-      render json: @client, status: :created
+    binding.pry
+    client = Client.new(client_params)
+    client.user = current_user
+    if client.save
+      render json: client, status: :created
     else
-      render json: @client.errors, status: :unprocessable_entity
+      render json: client.errors, status: :unprocessable_entity
     end
   end
 
@@ -45,11 +46,8 @@ class ClientsController < ApplicationController
   end
 
   private
-    def set_client
-      @client = Client.find(params[:id])
-    end
 
     def client_params
-      params.require(:client).permit(:name, :location, :age, :notes, :school, :rate, :goals, :user_id)
+      params.require(:client).permit(:name, :location, :age, :notes, :school, :rate, :goals)
     end
 end

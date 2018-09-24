@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Auth from './modules/Auth';
 
 class NewClientForm extends Component {
     constructor() {
@@ -19,7 +20,7 @@ class NewClientForm extends Component {
       const name = e.target.name;
       const val = e.target.value;
       this.setState({
-        [name]: val,
+        [name]: val
       });
     }
 
@@ -66,7 +67,8 @@ class NewClientForm extends Component {
                 type="number"
                 name="rate"
                 placeholder="Rate per hour" required
-                value={this.state.rate} />
+                value={this.state.rate}
+                onChange={this.handleChange} />
                 <input type="submit" value="add client" />
             </form>
   )}
