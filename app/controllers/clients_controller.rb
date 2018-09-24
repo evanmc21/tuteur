@@ -1,24 +1,21 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :update, :destroy]
+  before_action :require_login
 
-  # GET /clients
   def index
-
-      @clients = Client.all
-
+      @user = current_user
+      @clients = @user.clients
       render json: @clients
-
   end
 
-  # GET /clients/1
   def show
-    render json: Client.find(params[:id])
+    @user = current_user
+    @client = @user.clients.find(params[:id])
+    render json: @client
   end
 
-  # POST /clients
   def create
     @client = Client.new(client_params)
-
+    @client.user = current_user
     if @client.save
       render json: @client, status: :created
     else
@@ -26,7 +23,6 @@ class ClientsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /clients/1
   def update
     if @client.update(client_params)
       render json: @client
@@ -35,8 +31,9 @@ class ClientsController < ApplicationController
     end
   end
 
-  # DELETE /clients/1
   def destroy
+    @user = current_user
+    @client = @user.clients.find(params[:id])
     @client.destroy
     if @client.destroy
       head :no_content, status: :ok
@@ -46,12 +43,10 @@ class ClientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_client
       @client = Client.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def client_params
       params.require(:client).permit(:name, :location, :age, :notes, :school, :rate, :goals, :user_id)
     end
