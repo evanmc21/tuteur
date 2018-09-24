@@ -27,7 +27,10 @@ class App extends Component {
       }
     }).then(res => res.json())
       .then(res => {
-        console.log(res);
+        Auth.authenticateToken(res.token);
+        this.setState({
+          auth: Auth.isUserAuthenticated()
+        })
       }).catch(err => {
         console.log(err);
       })
