@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-const Client = ({client, onRemoveClient=f=>f}) =>
+class ClientCard extends Component {
 
-      <div>
-        <p>{client.name}</p>
-        <p>{client.location}</p>
-        <p>{client.age}</p>
-        <p>{client.school}</p>
-        <p>{client.goals}</p>
-        <p>{client.notes}</p>
-        <p>{client.rate}</p>
-        <button onClick={() => onRemoveClient(client.id)}>remove</button>
+  render(){
+    const { client } = this.props
+    return(
+      <div key={client.id} className="ClientCard">
+        <h3>{client.name}</h3>
+        <p>age: {client.age}</p>
+        <p>location: {client.location}</p>
+        <Link key={client.id} to={`/clients/${client.id}`}>
+        client details
+        </Link>
       </div>
+    )};
+}
 
-
-export default Client;
+export default ClientCard;

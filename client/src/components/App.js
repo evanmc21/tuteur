@@ -3,6 +3,7 @@ import Login from './Login';
 import Clients from './Clients';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
+import ClientDetail from './ClientDetail';
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
 import Auth from '../modules/Auth';
 import '../App.css';
@@ -73,7 +74,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+    <Router>
       <div className="App">
       <div className="nav">
       <Link to="/login">login</Link>
@@ -82,7 +83,7 @@ class App extends Component {
       <Link to="/clients">clients</Link>
       <span onClick={this.handleLogout}>Logout</span>
       </div>
-      <h1 style={{marginTop: "20vh", marginBottom: "5vh"}}>
+      <h1 style={{marginTop: "10vh", marginBottom: "5vh"}}>
           Tuteur
         </h1>
       <Route exact path="/clients" render={() =>
@@ -93,6 +94,7 @@ class App extends Component {
       <Redirect to ="/dashboard" /> : <Login handleLoginSubmit={this.handleLoginSubmit} />} />
       <Route exact path="/dashboard" render={() =>
       <Dashboard />} />
+      <Route exact path="/clients/:id" component={ClientDetail}/>
       </div>
     </Router>
     );
