@@ -4,6 +4,7 @@ import Clients from './Clients';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
 import ClientDetail from './ClientDetail';
+// import EditClientForm from './EditClientForm';
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
 import Auth from '../modules/Auth';
 import '../App.css';

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 // import Auth from '../modules/Auth';
 
 class ClientDetail extends Component {
@@ -38,6 +39,9 @@ class ClientDetail extends Component {
           <p>goals: {this.state.client.goals}</p>
           <p>notes: {this.state.client.notes}</p>
           <p>rate/hr: ${this.state.client.rate}</p>
+          <Link key={this.state.client.id} to={`/clients/${this.state.client.id}/edit`}>
+          edit client
+          </Link>
         </div>
       )
   }
