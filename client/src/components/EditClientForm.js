@@ -22,11 +22,12 @@ class EditClientForm extends Component {
   }
   handleSubmit(e) {
     e.preventDefaut();
-    const { id, name, age, location, school, goals, notes, rate, userId } = this.state;
-    this.props.editClient(id, name, age, location, school, goals, notes, rate, userId)
+    const { id, name, age, location, school, goals, notes, rate } = this.state;
+    this.props.editClient(id, name, age, location, school, goals, notes, rate)
   }
   render(){
     return(
+      <div>
       <form onSubmit={this.handleSubmit}>
       <input
           name="name"
@@ -70,14 +71,8 @@ class EditClientForm extends Component {
           placeholder="Rate per hour"
           value={this.state.rate}
           onChange={this.handleChange} />
-      <input
-          name="user_id"
-          type="hidden"
-          id="user_id"
-          value={this.state.userId}
-          onChange={this.handleChange} />
-
       </form>
+      </div>
     )
   }
 };

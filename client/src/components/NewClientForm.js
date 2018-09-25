@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Auth from './modules/Auth';
 
 class NewClientForm extends Component {
     constructor() {

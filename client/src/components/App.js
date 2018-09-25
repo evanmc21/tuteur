@@ -3,10 +3,9 @@ import Login from './Login';
 import Clients from './Clients';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
-import Logout from './Logout';
 import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
-import Auth from './modules/Auth';
-import './App.css';
+import Auth from '../modules/Auth';
+import '../App.css';
 // const API_URL = process.env.REACT_APP_API_URL;
 
 class App extends Component {

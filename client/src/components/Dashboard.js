@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NewClientForm from './NewClientForm';
-import Auth from './modules/Auth';
+import Auth from '../modules/Auth';
 
 class Dashboard extends Component {
   constructor(){
@@ -35,8 +35,8 @@ class Dashboard extends Component {
     fetch('/clients', {
       method: "POST",
       headers: {
-        'Content': 'application/json',
-        token: Auth.getToken(),
+        'Content-Type': 'application/json',
+      token: Auth.getToken(),
         'Authorization': `Token ${Auth.getToken()}`,
       },
       body: JSON.stringify({
