@@ -4,10 +4,13 @@ import Clients from './Clients';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
 import ClientDetail from './ClientDetail';
+import NavBar from './NavBar'
+import { IndexLinkContainer } from 'react-router-bootstrap';
+import Home from './Home';
 // import EditClientForm from './EditClientForm';
-import { BrowserRouter as Router, Link, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import Auth from '../modules/Auth';
-import '../App.css';
+// import '../App.css';
 // const API_URL = process.env.REACT_APP_API_URL;
 
 class App extends Component {
@@ -58,7 +61,7 @@ class App extends Component {
     }).catch(err => console.log(err));
   }
 
-  handleLogout() {
+handleLogout() {
     fetch('/logout', {
       method: "DELETE",
       headers: {
@@ -76,17 +79,11 @@ class App extends Component {
   render() {
     return (
     <Router>
-      <div className="App">
-      <div className="nav">
-      <Link to="/login">login</Link>
-      <Link to="/signup">signup</Link>
-      <Link to="/dashboard">dashboard</Link>
-      <Link to="/clients">clients</Link>
-      <span onClick={this.handleLogout}>Logout</span>
+      <div>
+      <div>
+      <NavBar />
       </div>
-      <h1 style={{marginTop: "10vh", marginBottom: "5vh"}}>
-          Tuteur
-        </h1>
+
       <Route exact path="/clients" render={() =>
       <Clients />} />
       <Route exact path="/signup" render={() => (this.state.auth) ?
@@ -96,6 +93,7 @@ class App extends Component {
       <Route exact path="/dashboard" render={() =>
       <Dashboard />} />
       <Route exact path="/clients/:id" component={ClientDetail}/>
+      <Route exact path="/" component={Home}/>
       </div>
     </Router>
     );

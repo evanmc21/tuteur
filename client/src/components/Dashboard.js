@@ -53,11 +53,12 @@ class Dashboard extends Component {
   render(){
     return(
       <div>
-      <NewClientForm addClient={this.addClient} /><br />
         {(this.state.clientsReceived) ? this.state.myClients.map(client => {
           return <ClientCard key={client.id} client={client}/>
         })
       : <p>loading..</p>}
+      <br />
+        <NewClientForm addClient={this.addClient} />
       </div>
     )
   }
