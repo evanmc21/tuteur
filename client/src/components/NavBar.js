@@ -23,16 +23,14 @@ class NavBar extends Component {
   render(){
     return(
       <div>
-  <Navbar color="faded" light expand="md">
-      {/* Brandname */}
+  <Navbar expand="md" dark style={{ background: "#4E3796"}}>
          <NavbarBrand href="/">
           Tuteur
       </NavbarBrand>
-         {/* Add toggler to auto-collapse */}
+
     <NavbarToggler onClick={this.toggle} />
     <Collapse isOpen={this.state.isOpen} navbar>
 
-        {/*Pull left */}
       <Nav className="ml-auto" navbar>
           <NavItem>
               <NavLink href="/signup">
@@ -51,7 +49,6 @@ class NavBar extends Component {
           </NavItem>
       </Nav>
 
-      {/* Pull right */}
       <Nav className="mr-auto" navbar>
         <UncontrolledDropdown nav inNavbar>
           <DropdownToggle nav caret>

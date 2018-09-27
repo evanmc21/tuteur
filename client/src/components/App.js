@@ -82,6 +82,7 @@ handleLogout() {
       <div>
       <div>
       <NavBar />
+      <span onClick={this.handleLogout}>logout</span>
       </div>
 
       <Route exact path="/clients" render={() =>

@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import NewClientForm from './NewClientForm';
 import ClientCard from './ClientCard';
+import { Form, FormGroup, Label, Col, Input, Container, Row } from 'reactstrap'
 import Auth from '../modules/Auth';
 
 class Dashboard extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      myClients: null,
-      clientsReceived: false
+      myClients: []
+
+      }
     }
-  }
 
   componentDidMount() {
     this.getUserClients();
@@ -26,8 +27,7 @@ class Dashboard extends Component {
     }).then(res => res.json())
       .then(res => {
         this.setState({
-          myClients: res.clients,
-          clientsReceived: true
+          myClients: res.clients
       })
     }).catch(err => console.log(err));
   }
@@ -50,18 +50,28 @@ class Dashboard extends Component {
       }).catch(err => console.log(err));
   }
 
-  render(){
-    return(
-      <div>
-        {(this.state.clientsReceived) ? this.state.myClients.map(client => {
-          return <ClientCard key={client.id} client={client}/>
-        })
-      : <p>loading..</p>}
-      <br />
-        <NewClientForm addClient={this.addClient} />
-      </div>
+  render() {
+    let clientCards = this.state.myClients.map(client => {
+      return (
+        <Col sm="3">
+          <ClientCard key={client.id} client={client} />
+        </Col>
+      )
+    })
+    return (
+      <Container fluid>
+        <h2 style={{ textAlign:"center" }}>your clients</h2>
+        <Row>
+          {clientCards}
+        </Row>
+
+        <Row>
+          <NewClientForm addClient={this.addClient} />
+        </Row>
+      </Container>
     )
   }
 }
+
 
 export default Dashboard;
