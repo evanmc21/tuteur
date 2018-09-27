@@ -23,7 +23,7 @@ class NavBar extends Component {
   render(){
     return(
       <div>
-  <Navbar expand="md" dark style={{ background: "#4E3796"}}>
+  <Navbar expand="md" dark style={{ background: "#1d1145", color:"#1d1145" }}>
          <NavbarBrand href="/">
           Tuteur
       </NavbarBrand>
@@ -33,13 +33,8 @@ class NavBar extends Component {
 
       <Nav className="ml-auto" navbar>
           <NavItem>
-              <NavLink href="/signup">
-                  signup
-              </NavLink>
-          </NavItem>
-          <NavItem>
-              <NavLink href="/login">
-                  login
+              <NavLink href="/dashboard">
+                  dashboard
               </NavLink>
           </NavItem>
           <NavItem>
@@ -52,7 +47,7 @@ class NavBar extends Component {
       <Nav className="mr-auto" navbar>
         <UncontrolledDropdown nav inNavbar>
           <DropdownToggle nav caret>
-            Bob
+            more
           </DropdownToggle>
 
           <DropdownMenu >

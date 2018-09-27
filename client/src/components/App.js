@@ -10,7 +10,7 @@ import Home from './Home';
 // import EditClientForm from './EditClientForm';
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import Auth from '../modules/Auth';
-// import '../App.css';
+import '../App.css';
 // const API_URL = process.env.REACT_APP_API_URL;
 
 class App extends Component {
@@ -79,7 +79,7 @@ handleLogout() {
   render() {
     return (
     <Router>
-      <div>
+      <div className="App">
       <div>
       <NavBar />
       <span onClick={this.handleLogout}>logout</span>
