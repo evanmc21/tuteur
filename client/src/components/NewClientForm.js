@@ -36,7 +36,7 @@ class NewClientForm extends Component {
     return (<Container>
       <Form className="form" onSubmit={(e) => this.props.addClient(e, this.state)}>
         <FormGroup row="row">
-          <br />
+          <br/>
           <Label id="label" for="name" sm={3}>name</Label>
           <Col sm={6}>
             <Input input="input" type="text" name="name" id="name" placeholder="with a placeholder" value={this.state.name} required="required" onChange={this.handleChange}/>
@@ -45,7 +45,7 @@ class NewClientForm extends Component {
 
         <FormGroup row="row">
           <Label id="label" for="age" sm={3}>age</Label>
-          <Col sm={3}>
+          <Col sm={4}>
             <Input input="input" type="number" name="age" id="age" placeholder="age" value={this.state.age} required="required" onChange={this.handleChange}/>
           </Col>
         </FormGroup>
@@ -66,7 +66,7 @@ class NewClientForm extends Component {
 
         <FormGroup row="row">
           <Label id="label" for="rate" sm={3}>rate/hr ($)</Label>
-          <Col sm={3}>
+          <Col sm={4}>
             <Input input="input" type="number" name="rate" id="rate" placeholder="rate" value={this.state.rate} required="required" onChange={this.handleChange}/>
           </Col>
         </FormGroup>
