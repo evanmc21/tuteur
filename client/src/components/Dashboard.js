@@ -61,12 +61,16 @@ class Dashboard extends Component {
     return (
       <Container fluid>
         <h2 style={{ textAlign:"center" }}>your clients</h2>
-        <Row>
+        <Row row="row">
           {clientCards}
         </Row>
-
+          <br />
+            <h2 style={{ textAlign:"center" }}>add client</h2>
+          <br />
         <Row>
+          <div className="form">
           <NewClientForm addClient={this.addClient} />
+          </div>
         </Row>
       </Container>
     )

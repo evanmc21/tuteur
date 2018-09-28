@@ -1,3 +1,73 @@
 .App {
   font-family: "Raleway", sans-serif;
 }
+
+.form {
+  margin: 0 auto;
+
+}
+
+.row {
+  background-color: #FFC3FF;
+}
+
+#homeRow {
+  background-color: #0db4b9;
+}
+
+#label {
+  color: white;
+}
+
+#name {
+  color: white;
+  background-color: #0db4b9;
+}
+
+#age {
+    color: white;
+    background-color: #0db4b9;
+}
+
+#location {
+  color: white;
+  background-color: #0db4b9;
+}
+
+#school {
+  color: white;
+  background-color: #0db4b9;
+}
+
+#rate {
+  color: white;
+  background-color: #0db4b9;
+}
+
+#goals {
+  color: white;
+  background-color: #0db4b9;
+}
+
+#notes {
+  color: white;
+  background-color: #0db4b9;
+}
+
+#button {
+  color: white;
+  background-color: #0db4b9;
+  border: #0db4b9;
+  margin: 0 auto;
+  display: block;
+}
+
+#login {
+  color: white;
+  margin: 1%;
+}
+
+#signup {
+  color: white;
+  margin: 1%;
+}
