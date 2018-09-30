@@ -46,31 +46,10 @@ class NavBar extends Component {
 
           <Nav className="ml-auto" navbar="navbar">
             <NavItem>
-              <NavLink href="/dashboard">
-                dashboard
+              <NavLink href="/signup">
+                signup
               </NavLink>
             </NavItem>
-          </Nav>
-
-          <Nav className="mr-auto" navbar="navbar">
-            <UncontrolledDropdown nav="nav" inNavbar="inNavbar">
-              <DropdownToggle nav="nav" caret="caret">
-                more
-              </DropdownToggle>
-
-              <DropdownMenu >
-                <DropdownItem>
-                  Account
-                </DropdownItem>
-                <DropdownItem>
-                  Settings
-                </DropdownItem>
-                <DropdownItem divider="divider"/>
-                <DropdownItem>
-                  Greatness
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
           </Nav>
         </Collapse>
       </Navbar>

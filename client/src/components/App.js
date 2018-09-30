@@ -4,13 +4,11 @@ import Signup from './Signup';
 import Dashboard from './Dashboard';
 import ClientDetail from './ClientDetail';
 import NavBar from './NavBar'
-import {IndexLinkContainer} from 'react-router-bootstrap';
+import User from './User'
 import Home from './Home';
-// import EditClientForm from './EditClientForm';
 import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom';
 import Auth from '../modules/Auth';
 import '../App.css';
-// const API_URL = process.env.REACT_APP_API_URL;
 
 class App extends Component {
   constructor() {
@@ -20,7 +18,6 @@ class App extends Component {
     }
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this)
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
   }
   handleSignupSubmit(e, data) {
     e.preventDefault();
@@ -52,24 +49,11 @@ class App extends Component {
     }).catch(err => console.log(err));
   }
 
-  handleLogout() {
-    fetch('/logout', {
-      method: "DELETE",
-      headers: {
-        token: Auth.getToken(),
-        'Authorization': `Token ${Auth.getToken()}`
-      }
-    }).then(res => {
-      Auth.deauthenticateToken();
-      this.setState({auth: Auth.isUserAuthenticated()})
-    }).catch(err => console.log(err));
-  }
-
   render() {
     return (<Router>
       <div className="App">
         <div>
-          <NavBar/>
+          {this.state.auth ? <User /> : <NavBar />}
 
         </div>
 
@@ -84,7 +68,6 @@ class App extends Component {
         <Route exact="exact" path="/dashboard" render={() => <Dashboard/>}/>
         <Route exact="exact" path="/clients/:id" component={ClientDetail}/>
         <Route exact="exact" path="/" component={Home}/>
-        <span onClick={this.handleLogout}>logout</span>
       </div>
     </Router>);
   }
