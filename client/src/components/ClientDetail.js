@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { Col, Row, Container, Card, CardTitle, CardText } from 'reactstrap';
 import Auth from '../modules/Auth';
 
 class ClientDetail extends Component {
@@ -27,18 +28,23 @@ class ClientDetail extends Component {
   }
 
   render() {
-    return (<div className="client-detail">
-      <h3>{this.state.client.name}</h3>
-      <p>age: {this.state.client.age}</p>
-      <p>location: {this.state.client.location}</p>
-      <p>school: {this.state.client.school}</p>
-      <p>goals: {this.state.client.goals}</p>
-      <p>notes: {this.state.client.notes}</p>
-      <p>rate/hr: ${this.state.client.rate}</p>
-      <Link key={this.state.client.id} to={`/clients/${this.state.client.id}/edit`}>
-        edit client
-      </Link>
-    </div>)
+    return (
+      <Container>
+        <Col>
+          <Row>
+            <h1 style={{ color: "#1d1145"}}>{this.state.client.name}</h1>
+          </Row><br></br>
+          <div className="clientDetails">
+          <h3>age: {this.state.client.age}</h3>
+          <h3>location: {this.state.client.location}</h3>
+          <h3>school: {this.state.client.school}</h3>
+          <h3>rate/hr: ${this.state.client.rate}</h3>
+          <h3>goals: {this.state.client.goals}</h3>
+          <h3>notes: {this.state.client.notes}</h3>
+        </div>
+        </Col>
+    </Container>
+    )
   }
 }
 

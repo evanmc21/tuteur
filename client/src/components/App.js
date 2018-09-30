@@ -70,7 +70,7 @@ class App extends Component {
       <div className="App">
         <div>
           <NavBar/>
-          <span onClick={this.handleLogout}>logout</span>
+
         </div>
 
         <Route exact="exact" path="/signup" render={(
@@ -84,6 +84,7 @@ class App extends Component {
         <Route exact="exact" path="/dashboard" render={() => <Dashboard/>}/>
         <Route exact="exact" path="/clients/:id" component={ClientDetail}/>
         <Route exact="exact" path="/" component={Home}/>
+        <span onClick={this.handleLogout}>logout</span>
       </div>
     </Router>);
   }

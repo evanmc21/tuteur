@@ -50,11 +50,6 @@ class NavBar extends Component {
                 dashboard
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="/clients">
-                clients
-              </NavLink>
-            </NavItem>
           </Nav>
 
           <Nav className="mr-auto" navbar="navbar">
@@ -72,9 +67,7 @@ class NavBar extends Component {
                 </DropdownItem>
                 <DropdownItem divider="divider"/>
                 <DropdownItem>
-                  <NavLink href="/" onClick={this.handleLogout}>
-                    Logout
-                  </NavLink>
+                  Greatness
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
