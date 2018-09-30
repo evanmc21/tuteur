@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Auth from '../modules/Auth';
-import { Redirect } from 'react-router-dom'
-import {
+]import {
   Navbar,
   Nav,
   NavItem,
@@ -16,7 +15,6 @@ import {
   DropdownMenu,
   NavbarBrand
 } from 'reactstrap';
-
 
 class User extends Component {
   constructor(props) {
@@ -82,7 +80,10 @@ class User extends Component {
                 <DropdownItem divider="divider"/>
                 <DropdownItem>
                   <NavLink onClick={this.handleLogout} href="/">
-                    <div style={{color: "black"}}> logout</div>
+                    <div style={{
+                        color: "black"
+                      }}>
+                      logout</div>
                   </NavLink>
                 </DropdownItem>
               </DropdownMenu>
@@ -94,9 +95,5 @@ class User extends Component {
   }
 
 }
-
-
-
-
 
 export default User;
