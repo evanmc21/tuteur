@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Auth from '../modules/Auth';
-]import {
+import {
   Navbar,
   Nav,
   NavItem,
