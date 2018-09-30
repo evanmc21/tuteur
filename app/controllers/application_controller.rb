@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
+  def fallback_index_html
+   render :file => 'public/index.html'
+  end
 
   def require_login
     authenticate_token || render_unauthorized("Access Denied")
