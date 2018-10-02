@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import NewClientForm from './NewClientForm';
 import ClientCard from './ClientCard';
-import {
-  Col,
-  Container,
-  Row
-} from 'reactstrap'
+import {Col, Container, Row} from 'reactstrap'
 import Auth from '../modules/Auth';
 
 class Dashboard extends Component {

@@ -14,7 +14,6 @@ import {
   NavbarBrand
 } from 'reactstrap';
 
-
 class User extends Component {
   constructor(props) {
     super(props);
@@ -64,10 +63,10 @@ class User extends Component {
                 </DropdownItem>
                 <DropdownItem divider="divider"/>
                 <DropdownItem>
-                    <div style={{
-                        color: "black"
-                      }}>
-                      Settings</div>
+                  <div style={{
+                      color: "black"
+                    }}>
+                    Settings</div>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
