@@ -3,15 +3,9 @@ import {
   Navbar,
   Nav,
   NavItem,
-  NavDropdown,
-  MenuItem,
   NavbarToggler,
   Collapse,
   NavLink,
-  DropdownToggle,
-  UncontrolledDropdown,
-  DropdownItem,
-  DropdownMenu,
   NavbarBrand
 } from 'reactstrap';
 

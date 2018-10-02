@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom'
-import { Col, Row, Container, Card, CardTitle, CardText } from 'reactstrap';
+import { Col, Row, Container } from 'reactstrap';
 import Auth from '../modules/Auth';
 
 class ClientDetail extends Component {

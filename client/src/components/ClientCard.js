@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Badge, CardTitle, CardText, CardDeck} from 'reactstrap';
-import {Link} from 'react-router-dom';
+import { Card, Badge, CardTitle, CardText } from 'reactstrap';
 
 class ClientCard extends Component {
 

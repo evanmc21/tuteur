@@ -4,10 +4,7 @@ import {
   Container,
   FormGroup,
   Label,
-  Row,
-  Col,
   Input,
-  FormText,
   Button
 } from 'reactstrap';
 

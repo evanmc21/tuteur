@@ -6,7 +6,6 @@ import {
   Label,
   Col,
   Input,
-  FormText,
   Button
 } from 'reactstrap';
 import '../App.css';

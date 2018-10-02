@@ -2,11 +2,7 @@ import React, {Component} from 'react';
 import NewClientForm from './NewClientForm';
 import ClientCard from './ClientCard';
 import {
-  Form,
-  FormGroup,
-  Label,
   Col,
-  Input,
   Container,
   Row
 } from 'reactstrap'

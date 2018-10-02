@@ -1,20 +1,19 @@
 import React, {Component} from 'react';
-import Auth from '../modules/Auth';
+// import Auth from '../modules/Auth';
 import {
   Navbar,
   Nav,
   NavItem,
-  NavDropdown,
-  MenuItem,
+  NavLink,
   NavbarToggler,
   Collapse,
-  NavLink,
   DropdownToggle,
   UncontrolledDropdown,
   DropdownItem,
   DropdownMenu,
   NavbarBrand
 } from 'reactstrap';
+
 
 class User extends Component {
   constructor(props) {
@@ -24,26 +23,12 @@ class User extends Component {
     this.state = {
       isOpen: false
     }
-    this.handleLogout = this.handleLogout.bind(this)
   }
 
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  }
-
-  handleLogout() {
-    fetch('/logout', {
-      method: "DELETE",
-      headers: {
-        token: Auth.getToken(),
-        'Authorization': `Token ${Auth.getToken()}`
-      }
-    }).then(res => {
-      Auth.deauthenticateToken();
-      this.setState({auth: Auth.isUserAuthenticated()})
-    }).catch(err => console.log(err));
   }
 
   render() {
@@ -79,12 +64,10 @@ class User extends Component {
                 </DropdownItem>
                 <DropdownItem divider="divider"/>
                 <DropdownItem>
-                  <NavLink onClick={this.handleLogout} href="/">
                     <div style={{
                         color: "black"
                       }}>
-                      logout</div>
-                  </NavLink>
+                      Settings</div>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

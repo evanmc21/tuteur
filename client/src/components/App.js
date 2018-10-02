@@ -18,6 +18,7 @@ class App extends Component {
     }
     this.handleSignupSubmit = this.handleSignupSubmit.bind(this)
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
   handleSignupSubmit(e, data) {
     e.preventDefault();
@@ -49,11 +50,28 @@ class App extends Component {
     }).catch(err => console.log(err));
   }
 
+  handleLogout() {
+    fetch('/logout', {
+      method: "DELETE",
+      headers: {
+        token: Auth.getToken(),
+        'Authorization': `Token ${Auth.getToken()}`
+      }
+    }).then(res => {
+      Auth.deauthenticateToken();
+      this.setState({auth: Auth.isUserAuthenticated()})
+    }).catch(err => console.log(err));
+  }
+
   render() {
     return (<Router>
       <div className="App">
         <div>
-          {this.state.auth ? <User /> : <NavBar />}
+          {
+            this.state.auth
+              ? <User/>
+              : <NavBar/>
+          }
 
         </div>
 
@@ -68,6 +86,7 @@ class App extends Component {
         <Route exact="exact" path="/dashboard" render={() => <Dashboard/>}/>
         <Route exact="exact" path="/clients/:id" component={ClientDetail}/>
         <Route exact="exact" path="/" component={Home}/>
+        <span onClick={this.handleLogout}>logout</span>
       </div>
     </Router>);
   }
