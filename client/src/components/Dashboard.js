@@ -51,10 +51,10 @@ class Dashboard extends Component {
     })
     return (<Container fluid="fluid">
 
-      {this.state.myClients === ""
-      ? <p style={{
+      {this.state.myClients == ""
+      ? <h4 style={{
           textAlign: "center"
-        }}>this is your dashboard. any clients you add will be displayed here. add a client below.</p>
+        }}>this is your dashboard. any clients you add will be displayed here. add a client below.</h4>
       : <h2 style={{
           textAlign: "center"
         }}>your clients</h2>
