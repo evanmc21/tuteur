@@ -11,7 +11,11 @@ import {
   UncontrolledDropdown,
   DropdownItem,
   DropdownMenu,
-  NavbarBrand
+  NavbarBrand,
+  Form,
+  Input,
+  Button,
+  Col
 } from 'reactstrap';
 
 class User extends Component {
@@ -71,6 +75,13 @@ class User extends Component {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
+          <Col className="d-none d-lg-flex justify-content-end">
+            <Form inline>
+              <Input type="search" className="mr-3" placeholder="Search Clients" />
+              <Button type="submit" color="info" outline>Search</Button>
+            </Form>
+          </Col>
+
         </Collapse>
       </Navbar>
     </div>)

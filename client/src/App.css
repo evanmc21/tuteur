@@ -19,10 +19,15 @@
   background-color: #0db4b9;
 }
 
+.home {
+  text-align: center;
+}
 
 /* home page */
-
-#homeRow {
+#home-display {
+  color: white;
+}
+#jumbotron {
   background-color: #0db4b9;
 }
 
@@ -87,7 +92,8 @@
 /* login & signup */
 #login {
   color: white;
-  margin: 1%;
+  text-align: center;
+
 }
 
 #signup {
