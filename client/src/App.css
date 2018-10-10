@@ -2,6 +2,17 @@
   font-family: "Raleway", sans-serif;
 }
 
+img {
+  max-width: 100%;
+  width: 33.33%;
+  height: auto;
+  opacity: 0.7;
+}
+
+img:hover {
+  opacity: 1;
+}
+
 .form {
   margin: 0 auto;
 
@@ -30,6 +41,9 @@
 #jumbotron {
   background-color: #0db4b9;
 }
+/* #container-home {
+  background-color: #0db4b9;
+} */
 
 /* client form */
 
