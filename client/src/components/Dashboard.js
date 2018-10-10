@@ -8,8 +8,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      myClients: [], 
-      search: ""
+      myClients: [],
     }
   }
 
@@ -51,9 +50,15 @@ class Dashboard extends Component {
       </Col>)
     })
     return (<Container fluid="fluid">
-      <h2 style={{
+
+      {this.state.myClients === ""
+      ? <p style={{
+          textAlign: "center"
+        }}>this is your dashboard. any clients you add will be displayed here. add a client below.</p>
+      : <h2 style={{
           textAlign: "center"
         }}>your clients</h2>
+      }
       <Row row="row">
         {clientCards}
       </Row>
