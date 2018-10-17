@@ -86,7 +86,7 @@ class App extends Component {
         <Route exact="exact" path="/dashboard" render={() => <Dashboard/>}/>
         <Route exact="exact" path="/clients/:id" component={ClientDetail}/>
         <Route exact="exact" path="/" component={Home}/>
-        <span onClick={this.handleLogout}>logout</span>
+        { this.state.auth ? <span onClick={this.handleLogout}>logout</span> : null }
       </div>
     </Router>);
   }

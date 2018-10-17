@@ -32,8 +32,11 @@ class ClientDetail extends Component {
         <Col>
           <Row>
             <h1 style={{ color: "#1d1145"}}>{this.state.client.name}</h1>
-          </Row><br></br>
-          <div className="clientDetails">
+          </Row>
+        </Col>
+        <br></br>
+        <Col>
+        <div className="clientDetails">
           <h3>age: {this.state.client.age}</h3>
           <h3>location: {this.state.client.location}</h3>
           <h3>school: {this.state.client.school}</h3>
@@ -41,7 +44,7 @@ class ClientDetail extends Component {
           <h3>goals: {this.state.client.goals}</h3>
           <h3>notes: {this.state.client.notes}</h3>
         </div>
-        </Col>
+      </Col>
     </Container>
     )
   }
