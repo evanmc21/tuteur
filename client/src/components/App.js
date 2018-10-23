@@ -4,7 +4,7 @@ import Signup from './Signup';
 import Dashboard from './Dashboard';
 import ClientDetail from './ClientDetail';
 import NavBar from './NavBar'
-import User from './User'
+import UserNav from './UserNav'
 import Home from './Home';
 import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom';
 import Auth from '../modules/Auth';
@@ -69,7 +69,7 @@ class App extends Component {
         <div>
           {
             this.state.auth
-              ? <User/>
+              ? <UserNav/>
               : <NavBar/>
           }
 

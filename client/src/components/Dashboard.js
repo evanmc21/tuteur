@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import NewClientForm from './NewClientForm';
 import ClientCard from './ClientCard';
-import {Col, Container, Row} from 'reactstrap'
+import {Col, Container, Row, Form, Input, Button} from 'reactstrap'
 import Auth from '../modules/Auth';
 
 class Dashboard extends Component {
@@ -9,11 +9,16 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       myClients: [],
+      search: ''
     }
   }
 
   componentDidMount() {
     this.getUserClients();
+  }
+
+  updateSearch(e) {
+    this.setState({search: e.target.value})
   }
 
   getUserClients() {
@@ -44,7 +49,13 @@ class Dashboard extends Component {
   }
 
   render() {
-    let clientCards = this.state.myClients.map(client => {
+    let filteredClients = this.state.myClients.filter(
+      (client) => {
+        return client.name.toLowerCase().indexOf(
+          this.state.search.toLowerCase()) !== -1;
+      }
+    );
+    let clientCards = filteredClients.map(client => {
       return (<Col sm="3">
         <ClientCard key={client.id} client={client}/>
       </Col>)
@@ -59,6 +70,14 @@ class Dashboard extends Component {
           textAlign: "center"
         }}>your clients</h2>
       }
+      <Col className="d-none d-md-flex justify-content-end">
+        <Form inline>
+          <Input type="search" className="mr-3" placeholder="Search Clients"
+            value={this.state.search}
+            onChange={this.updateSearch.bind(this)} />
+          <Button type="submit" color="info" outline>Search</Button>
+        </Form>
+      </Col>
       <Row row="row">
         {clientCards}
       </Row>
