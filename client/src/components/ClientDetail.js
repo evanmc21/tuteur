@@ -59,9 +59,9 @@ class ClientDetail extends Component {
           <h3>rate/hr: ${this.state.client.rate}</h3>
           <h3>goals: {this.state.client.goals}</h3>
           <h3>notes: {this.state.client.notes}</h3>
-          <Link key={this.state.client.id} to={`/clients/${this.state.client.id}/edit`}>edit client</Link>
+          <Link id="link" key={this.state.client.id} to={`/clients/${this.state.client.id}/edit`}>edit client</Link>
           <br></br>
-          <Button onClick={this.onDelete.bind(this)}>Delete</Button>
+          <Button id="button" onClick={this.onDelete.bind(this)}>Delete</Button>
         </div>
       </Col>
     </Container>
