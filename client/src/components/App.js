@@ -3,8 +3,9 @@ import Login from './Login';
 import Signup from './Signup';
 import Dashboard from './Dashboard';
 import ClientDetail from './ClientDetail';
-import NavBar from './NavBar'
-import UserNav from './UserNav'
+import NavBar from './NavBar';
+import UserNav from './UserNav';
+import EditClient from './EditClient';
 import Home from './Home';
 import {BrowserRouter as Router, Redirect, Route} from 'react-router-dom';
 import Auth from '../modules/Auth';
@@ -85,6 +86,7 @@ class App extends Component {
             : <Login handleLoginSubmit={this.handleLoginSubmit}/>}/>
         <Route exact="exact" path="/dashboard" render={() => <Dashboard/>}/>
         <Route exact="exact" path="/clients/:id" component={ClientDetail}/>
+        <Route exact="exact" path="/clients/:id/edit" component={EditClient}/>
         <Route exact="exact" path="/" component={Home}/>
         { this.state.auth ? <span onClick={this.handleLogout}>logout</span> : null }
       </div>
